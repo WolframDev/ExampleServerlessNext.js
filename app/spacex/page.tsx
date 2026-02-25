@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import type { Rocket } from "../../lib/models/Rocket";
 import RocketCard from "../../components/RocketCard/RocketCard";
-import "./rockets.css"; // archivo de estilos
+import "./rockets.css";
 
 export default function RocketsPage() {
   const [rockets, setRockets] = useState<Rocket[]>([]);
