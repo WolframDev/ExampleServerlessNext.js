@@ -6,7 +6,7 @@
 .rockets-list {
   list-style: none;
   padding: 0;
-  display: gray;
+  display: rgb(123, 86, 86);
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
 }
