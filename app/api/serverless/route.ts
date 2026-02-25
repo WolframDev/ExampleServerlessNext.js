@@ -18,7 +18,12 @@ export async function GET() {
     }));
 
     return NextResponse.json(resultado);
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
+  } catch (error: unknown) {
+    let mensaje = "Error desconocido";
+
+    if (error instanceof Error) {
+      mensaje = error.message;
+    }
+    return NextResponse.json({ error: mensaje }, { status: 500 });
   }
 }
