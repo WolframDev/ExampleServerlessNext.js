@@ -9,7 +9,7 @@ export async function GET() {
 
     const cohetes = await response.json();
 
-    const resultado: Rocket[] = cohetes.map((rocket: any) => ({
+    const resultado: Rocket[] = cohetes.map((rocket: ApiRocket) => ({
       nombre: rocket.name,
       tipo: rocket.type,
       altura: rocket.height.meters,
