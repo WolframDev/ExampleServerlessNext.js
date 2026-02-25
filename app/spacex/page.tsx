@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import type { Rocket } from "../../lib/models/Rocket";
+import RocketCard from "../../components/RocketCard/RocketCard";
+import "./rockets.css"; // archivo de estilos
 
 export default function RocketsPage() {
   const [rockets, setRockets] = useState<Rocket[]>([]);
@@ -9,7 +11,7 @@ export default function RocketsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/api/spacex")
+    fetch("/api/serverless")
       .then((res) => res.json())
       .then((data: Rocket[]) => setRockets(data))
       .catch((err) => setError(err.message))
@@ -20,14 +22,11 @@ export default function RocketsPage() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div style={{ padding: "2rem" }}>
+    <div className="rockets-container">
       <h1>Cohetes de SpaceX</h1>
-      <ul>
+      <ul className="rockets-list">
         {rockets.map((r) => (
-          <li key={r.nombre}>
-            <strong>{r.nombre}</strong> ({r.tipo}) - Altura: {r.altura} m,
-            Diámetro: {r.diametro} m, Masa: {r.masa} kg
-          </li>
+          <RocketCard key={r.nombre} rocket={r} />
         ))}
       </ul>
     </div>
